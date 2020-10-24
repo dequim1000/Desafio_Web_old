@@ -2,7 +2,7 @@
 Projeto realizado pelos alunos:
 - André Otávio Bordonal Artuzo - 831487
 - Gideone Rodrigues - 832409
-- Henrique Delefrate - 831
+- Henrique Delefrate - 831620
 - Victor Signorini - 831891
 
 <p align="center">
