@@ -6,7 +6,7 @@ Projeto realizado pelos alunos:
 - Victor Signorini - 831891
 
 <p align="center">
-   <img src="https://github.com/dequim1000/Desafio_Web/blob/main/images/Logo.png" width="400"/>   
+   <img src="https://github.com/dequim1000/Desafio_Web/blob/main/images/Logo.png" width="500"/>   
 </p>
 <p align="center">:rocket: Formulário para cadastrar usuários em Arquivo.</p>
 
