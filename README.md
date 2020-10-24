@@ -25,6 +25,7 @@ Projeto realizado pelos alunos:
 ### 💻 Projeto Web 
 
 ```bash
-#Telas com Layout feito - Login e DashBoard, conforme o pedido.
-#Abrir o login.
+#Login
+#Dashboard
+#Responsive
 ```
