@@ -2,7 +2,7 @@
 let iconMenu = document.getElementById('iconMenu');
 let sidebar = document.getElementById('sidebar');
 let mainContent = document.getElementById('main-content');
-sidebar.style.left = '-300px';
+sidebar.style.left = "-300px";
 
 let w = window.innerWidth;
 //Evento resive
@@ -26,8 +26,8 @@ function responsiveSidebar(){
         }
     } else{ //Desk
         if (sidebar.style.display == 'none'){
-            sidebar.style.display = 'block'
-            mainContent.style.width = 'calc (100% - 300px )';
+            mainContent.style.width = 'calc (100% - 300px)';
+            sidebar.style.display = 'block';
         } else{
             sidebar.style.display = 'none';
             mainContent.style.width = '100%';

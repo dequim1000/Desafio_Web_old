@@ -1,0 +1,107 @@
+.combox{
+    margin-top: 20px;
+}
+.opcaocbb{
+    width: 200px;
+    border-radius: 10px;
+    font-size: 20px;
+    padding-left: 10px;   
+}
+.opcao{
+    background-color: #264a68;
+    color: white;
+}
+#provedor{
+    width: 150px;
+    margin-right: 10px;
+}
+
+.loginProvedor {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 45px;
+}
+
+.labelprovedor{
+    font-size: 18px;
+    color: rgb(38, 74, 104);
+    font-family: 'Monda', sans-serif;
+}
+.form-control{
+    margin: 10px 5px;
+    font-size: 16px;
+    font-family: 'Monda', sans-serif;
+    color: rgb(38, 74, 104);
+}
+
+.config{
+    width: 333px;
+}
+
+.btnLoginProvedor{
+    height: 45px;
+    width: 140px;
+    font-family: 'Monda', sans-serif;
+    font-size: 20px;
+    background: linear-gradient(135deg, rgb(38, 74, 104),#264a68);
+    border: 1px solid rgb(38, 74, 104);
+    color: #ffffff;
+    margin-left: 100px;
+    margin-top: 5px;
+}
+
+.btnLoginProvedor:hover{
+    border: none;
+    color: #ffffff;
+    transform: scale(1.03);
+    transition: .2s;
+}
+
+#text ul{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#ulText{
+    width: 300px;
+    font-size: 22px;
+    margin-top: 10px;
+    padding-left: 10px;
+    text-decoration: none;
+}
+
+#lixeira{
+    font-size: 28px;
+}
+
+.iconeLixeira{
+    color:  red;
+}
+
+@media screen and  (max-width: 400px){
+    .form-control{
+        width: 320px;
+    }
+    .btnLoginProvedor{
+        margin-left: 90px;
+    }
+}
+
+
+@media screen and  (max-width: 350px){
+    .form-control{
+        width: 250px;
+    }
+
+    .btnLoginProvedor{
+        margin-left: 60px;
+    }
+
+    #ulText{
+        width: 250px;
+    }
+}

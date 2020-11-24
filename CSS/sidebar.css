@@ -29,20 +29,17 @@ sidebar .sidebar-title img{
 
 sidebar .sidebar-title h2{
     font-size: 20px;
-    margin-top: 8px;
-    color: firebrick;
+    margin-top: -1px;
+    color: #264A68;
 }
 
-.menu{
-    border-right: 1px solid rgba(0, 0, 0, .0625);
-}
 
 .menu ul{
     list-style-type: none;
 }
 
 .menu ul li{
-    border: 1px solid rgba(0, 0, 0, .0625);
+
     padding: 25px 20px;
     width: 100%;
     display: flex;
@@ -52,19 +49,21 @@ sidebar .sidebar-title h2{
 
 
 .menu ul li svg{
-    color: rgb(38, 74, 104);
+    color: #264A68;
     font-size: 36px;
 }
 
 .menu ul li a{
-    color: #72777a;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #264A68;
     margin-left: 10px;
     text-decoration: none ;
     text-transform: uppercase;
+    font: bold;
 }
 
 .menu ul li a:hover{
-    color:  rgb(38, 74, 104);
+    color:  firebrick;
     transform: scale(1.03);
     transition: .2s;
 }

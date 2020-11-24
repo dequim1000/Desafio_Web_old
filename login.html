@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <link rel="shortcut icon" href="images/icon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela Login</title>
     <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="plugins/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="CSS/all.css">
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <div class="login">
         <div class="banner-login">
              <img src="images/Logo.png" alt="Logo de Um caminhão">
-            <h2>Expresso API</h2>
+            <h2 style="color: white;">Expresso API</h2>
         </div>
 
         <div class="div-login">
@@ -21,16 +23,19 @@
                 <form class="form-login">
                     <div class="form-group" id="email-div">
                         <label for="labelEmail" class="label">Email</label>
-                        <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" onchange ="helpEmail();">
                         <small id="emailHelp" class="form-text text-muted">Seu email está seguro conosco!</small>
+                        <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" onchange ="helpEmail();" >
+                        <small id="emailHide" class="form-text text-hiden" hidden>Email Vazio, preenhca o campo de email!</small>
                     </div>
                     <div class="form-group" id="senha-div">
                         <label for="labelSenha" class="label">Senha</label>
                         <input type="password" class="form-control" id="inputSenha">
+                        <small id="passError" class="form-text text-hiden" hidden>Dados incorretos!</small>
                     </div>
                     <div class="form-group form-check">
                         <input type="checkbox" class="form-check-input" id="checkbox">
                         <label class="form-check-label" id="check-forget" for="exampleCheck1">Lembrar de mim</label>
+                        
                     </div>
                     <div class="divbotao">
                         <button type="button" class="btn btnLogin">Login</button>
