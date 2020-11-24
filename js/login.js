@@ -14,7 +14,7 @@ let button = document.querySelector('form button.btn');
         
 
         if (document.getElementById("inputEmail").value  != ""){
-            axios.post('http://localhost/Desafio_Web/controllers/Usuario.php',data).then(function (x){
+            axios.post('http://localhost/Desafio_Web_2.0/controllers/Usuario.php',data).then(function (x){
                 if(x.data.resposta ==1){
                     location.href = "views/dashboard.html"
                     sessionStorage.setItem('user',document.getElementById('inputEmail').value)
@@ -25,9 +25,6 @@ let button = document.querySelector('form button.btn');
             })
         }else{
             document.querySelector("#emailHide").hidden = false;
-        }
-
-        
-       
+        }   
 })
 

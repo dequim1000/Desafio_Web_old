@@ -21,3 +21,27 @@ function provedor() {
 
     document.getElementById('text').insertAdjacentElement('beforeend', newValue);
 }
+
+let button = document.querySelector('form button.btn');
+    button.addEventListener("click", () =>{
+        let data = new FormData();
+        data.append('user',document.getElementById('provedorEmail').value)
+        data.append('pass',document.getElementById('provedorSenha').value)
+        data.append('name',document.getElementById('provedores').value)
+        
+
+        if (document.getElementById("provedorEmail").value  != ""){
+            axios.post('http://localhost/Desafio_Web_2.0/controllers/Provedor.php',data).then(function (x){
+                if(x.data.resposta ==1){
+                    provedor();
+                    sessionStorage.setItem('user',document.getElementById('provedorEmail').value)
+                    sessionStorage.setItem('pass',document.getElementById('provedorSenha').value)
+                    sessionStorage.setItem('name',document.getElementById('provedores').value)
+                }else{
+                    document.querySelector("#provedorError").hidden = false;
+                }
+            })
+        }else{
+            document.querySelector("#userHide").hidden = false;
+        }   
+})

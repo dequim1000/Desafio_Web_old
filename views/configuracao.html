@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../plugins/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="../CSS/all.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <div class="flex-dashboard">
@@ -51,19 +52,22 @@
                 </div>
                 <div class="combox">
                     <select id="provedores" class="opcaocbb" name="select">
-                        <option class="opcao" value="valor1"selected>JAMEF</option> 
-                        <option class="opcao" value="valor2">RTE</option>
-                        <option class="opcao" value="valor3">GBC</option>
-                        <option class="opcao" value="valor3">ABC</option>
+                        <option class="opcao" value="JAMEF"selected>JAMEF</option> 
+                        <option class="opcao" value="RTE">RTE</option>
+                        <option class="opcao" value="GBC">GBC</option>
+                        <option class="opcao" value="ABC">ABC</option>
                     </select>
                 </div>
                 <div class="loginProvedor">
-                    <label for="labelEmail" class="labelprovedor">Email</label>
-                    <input class="form-control config" id="provedorEmail" type="email">
-                    <label for="labelPass" class="labelprovedor">Senha</label>
-                    <input class="form-control config" id="provedorSenha" type="password"> 
-                    <button type="button" class="btn btnLoginProvedor" onclick="provedor()">Adicionar</button>
-                    
+                    <form action="">
+                        <label for="labelEmail" class="labelprovedor">Email</label>
+                        <input class="form-control config" id="provedorEmail" type="email">
+                        <small id="userHide" class="form-text text-hiden" hidden>Email Vazio, preenhca o campo de email!</small>
+                        <label for="labelPass" class="labelprovedor">Senha</label>
+                        <input class="form-control config" id="provedorSenha" type="password"> 
+                        <small id="provedorError" class="form-text text-hiden" hidden>Dados incorretos!</small>
+                        <button type="button" class="btn btnLoginProvedor">Adicionar</button>
+                    </form>
                 </div>
                 <div class="column-content">
                     <h3 class="font-plano">Seus Provedores</h3>

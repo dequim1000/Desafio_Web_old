@@ -73,3 +73,13 @@ insert into Client values(2, "sigg@gmail.com", "pass4321", "sigg", "sigg", "sigg
 insert into Client values(3, "gid@gmail.com", "5454pass", "gid", "gid", "gid", "16253614987");
 
 insert into Client values(4, "blaublau@gmail.com", "420420", "blaublau", "blaublau", "blaublau", "16253614987");
+
+
+
+insert into ClientConfiguration values(1, "RTE", "rodonaves@rodonaves.com.br", "rodo1234", 8, "rodonaves@rodonaves.com.br", "rodonaves@rodonaves.com.br");
+
+insert into ClientConfiguration values(2, "JAMEF", "jamef@jamef.com.br", "jamef1234", 8, "jamef@jamef.com.br", "jamef@jamef.com.br");
+
+insert into ClientConfiguration values(3, "GBC", "gbc@gbc.com.br", "gbc234", 8, "gbc@gbc.com.br", "gbc@gbc.com.br");
+
+insert into ClientConfiguration values(4, "ABC", "abc@abc.com.br", "abc1234", 8, "abc@abc.com.br", "abc@abc.com.br");
