@@ -28,7 +28,7 @@ class Usuario{
         foreach($consulta as $us){
         $this->id=$us["Id"];
         $this->email=$us["Email"];
-        $this->passwordClient=$us["PasswordClient"];
+        $this->passwordClient=$us["Password"];
         $this->accessToken=$us["accesstoken"];
         $this->Document=$us["Document"];
         $this->NameClient=$us["NameClient"];
@@ -39,23 +39,27 @@ class Usuario{
     public function getId(){
         return $this->id;
     }
+
     public function getEmail(){
         return $this->email;
     }
+
     public function getPasswordClient(){
         return $this->passwordClient;
     }
+
     public function getAccessToken(){
         return $this->accessToken;
-
     }
+
     public function getDocument(){
         return $this->Document;
-
     }
+
     public function getNameClient(){
         return $this->NameClient;
     }
+    
     public function getPhone(){
         return $this->phone;
     }

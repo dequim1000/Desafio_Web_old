@@ -9,7 +9,7 @@ $cbList=$_REQUEST['name'];
 
 $provedor = new Provedor($user,'');
 
-if($user==$provedor->getUser() && $pass ==$provedor->getPass() && $cbList ==$provedor->getHost()){
+if($user==$provedor->getUsername() && $pass ==$provedor->getPass() && $cbList ==$provedor->getName()){
     $resposta = array('resposta'=>'1');
 }else{
     $resposta = array('resposta'=>'0');

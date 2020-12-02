@@ -5,12 +5,10 @@ include 'conexao.php';
 class Provedor{
 
     public  $clientId;
-    private $smtpUsername;
-    private $smtpHost;
-    private $smtpPassword;
-    private $smtpPort;
-    private $trackingemailTemplate;
-    private $trackingemailEventTemplate;
+    private $apiId;
+    private $username;
+    private $password;
+    private $name;
 
     public function Provedor($iden,$pass){
         $this->montaProvedor($iden,$pass);
@@ -20,16 +18,14 @@ class Provedor{
     private function montaProvedor($iden,$pass){
         $conexao = new Conexao();
 
-        $consulta=$conexao->conecta()->query("SELECT * FROM ClientConfiguration WHERE SMTPUsername='$iden'");
-       
+        $consulta=$conexao->conecta()->query("SELECT * FROM ClientApi JOIN Api WHERE Id = ApiId and Username='$iden'");
+        
         foreach($consulta as $us){
         $this->clientId=$us["ClientId"];
-        $this->smtpUsername=$us["SMTPUsername"];
-        $this->smtpPassword=$us["SMTPPassword"];
-        $this->smtpHost=$us["SMTPHost"];
-        $this->smtpPort=$us["SMTPPort"];
-        $this->trackingemailTemplate=$us["TrackingEmailTemplate"];
-        $this->trackingemailEventTemplate=$us["TrackingEmailEventTemplate"];
+        $this->apiId=$us["ApiId"];
+        $this->username=$us["Username"];
+        $this->password=$us["Password"];
+        $this->name=$us["Name"];
         }
 
     }
@@ -38,27 +34,20 @@ class Provedor{
         return $this->clientId;
     }
 
-    public function getUser(){
-        return $this->smtpUsername;
+    public function getApiId(){
+        return $this->apiId;
     }
 
-    public function getHost(){
-        return $this->smtpHost;
+    public function getUsername(){
+        return $this->username;
     }
 
     public function getPass(){
-        return $this->smtpPassword;
+        return $this->password;
     }
 
-    public function getPort(){
-        return $this->smtpPort;
+    public function getName(){
+        return $this->name;
     }
 
-    public function getTemplate(){
-        return $this->trackingemailTemplate;
-    }
-
-    public function getEventTemplate(){
-        return $this->trackingemailEventTemplate;
-    }
 }
