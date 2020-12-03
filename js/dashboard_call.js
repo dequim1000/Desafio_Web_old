@@ -37,13 +37,18 @@
         dataTable_call.addColumn({type: 'string', 'id': 'category'});
         dataTable_call.addColumn({type: 'number', 'id': 'amount'});
         dataTable_call.addRows([
-            ['Seg', 31],
-            ['Ter', 45],
-            ['Qua', 19],
-            ['Qui', 25],
-            ['Sex', 110],
-            ['Sab', 20],
-            ['Dom', 10],
+            ['Jan', 28],
+            ['Fev', 155],
+            ['Mar', 43],
+            ['Abr', 91],
+            ['Mai', 181],
+            ['Jun', 53],
+            ['Jul', 19],
+            ['Ago', 290],
+            ['Set', 30],
+            ['Out', 54],
+            ['Nov', 150],
+            ['Dez', 200],
         ]);
         
         const options_call = {

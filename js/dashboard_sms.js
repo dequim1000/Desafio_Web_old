@@ -1,7 +1,7 @@
 /*SMS*/
 
 /*Criação do gráfico rosquinha*/
-    google.charts.load('current', {'packages':['corechart']});
+   /* google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChartPizza);
 
       function drawChartPizza() {
@@ -28,7 +28,7 @@
         var chart_sms = new google.visualization.PieChart(document.getElementById('donut_single_sms'));
         chart_sms.draw(tipos_sms, quantidade_sms);
       }
-
+    /*
 /*Criação do gráfico tabela*/
     google.charts.load('49', {'packages': ['vegachart']}).then(drawChartTable);
 
@@ -37,13 +37,18 @@
       dataTable_sms.addColumn({type: 'string', 'id': 'category'});
       dataTable_sms.addColumn({type: 'number', 'id': 'amount'});
       dataTable_sms.addRows([
-          ['Seg', 28],
-          ['Ter', 55],
-          ['Qua', 43],
-          ['Qui', 91],
-          ['Sex', 81],
-          ['Sab', 53],
-          ['Dom', 19],
+          ['Jan', 28],
+          ['Fev', 55],
+          ['Mar', 43],
+          ['Abr', 91],
+          ['Mai', 81],
+          ['Jun', 53],
+          ['Jul', 19],
+          ['Ago', 20],
+          ['Set', 30],
+          ['Out', 54],
+          ['Nov', 150],
+          ['Dez', 200],
       ]);
 
       const options_sms = {

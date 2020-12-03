@@ -23,8 +23,12 @@
                         <a href="dashboard.html">Dashboard</a>
                     </li>
                     <li>
-                        <i class="fas fa-columns"></i>
-                        <a href="planos.html">Detalhes dos Planos</a>
+                        <i class="fas fa-sms"></i>
+                        <a href="sms.html">Detalhes de SMS</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone-alt"></i>
+                        <a href="planos.html">Detalhes de Chamadas</a>
                     </li>
                     <li>
                         <i class="fas fa-cog"></i> 
@@ -51,23 +55,25 @@
                         <!--SMS-->
                         <div class="dashboard-card">
                             <div class="dash-grafic">
-                                <h2>SMS</h2>
-                                <div id="donut_single_sms"></div>
+                                <a class="link-detalhes" href ="sms.html"><h2>SMS</h2></a>
+                                <div class="cardSms">
+                                    <div class="card text-white bg-primary cdSMS" style="max-width: 18rem;">
+                                        <div class="card-header">UTILIZADOS</div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">150</h5>
+                                        </div>
+                                    </div>
+                                    <div class="card text-white bg-warning cdSMS" style="max-width: 18rem;">
+                                        <div class="card-header">RESTANTES</div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">500</h5>
+                                    </div>
+                                </div>
+                            </div>
                             </div>
 
                             <div class="dash-info">
-                                <div class="contratado">
-                                    <h2>Contratado</h2>
-                                    <p>1000</p>
-                                </div>
-                                <div class="utilizado">
-                                    <h2>Utilizado</h2>
-                                    <p>200</p>
-                                </div>
-                                <div class="extras">
-                                    <h2>Extras</h2>
-                                    <p>100</p>
-                                </div>
+                                
                             </div>
 
                             <div class="dash-legend">
@@ -90,10 +96,6 @@
                                             <td>R$500,00</td>
                                         </tr>
 
-                                        <tr>
-                                            <th>Valor por Mensagem</td>
-                                            <td>R$0,10</td>
-                                        </tr>
 
 
                                     </tbody>
@@ -101,18 +103,18 @@
                             </div>
 
                             <div class="dash-table">
-                                <h2>Números Diários de Sms</h2>
+                                <h2>Números Mensal de Sms</h2>
                                 <div id="chart-div_sms"></div>
                             </div>
 
                             <div class="dash-table-info">
-                                <p>Uso médio diário de SMS: </p> <p>8</p>
+                                <p>Uso mensal de SMS: </p> <p>8</p>
                             </div>
                         </div>
                         <!--CHAMADAS EXCEDENTES-->
                         <div class="dashboard-card">
                             <div class="dash-grafic">
-                                <h2>CHAMADAS EXCEDENTES</h2>
+                                <a class="link-detalhes" href="planos.html"><h2>CHAMADAS EXCEDENTES</h2></a>
                                 <div id="donut_single_call"></div>
                             </div>
 
@@ -162,12 +164,12 @@
                             </div>
 
                             <div class="dash-table">
-                                <h2>Números Chamadas Diárias</h2>
+                                <h2>Números Chamadas Mensal</h2>
                                 <div id="chart-div_call"></div>
                             </div>
 
                             <div class="dash-table-info">
-                                <p>Média de Chamadas diárias: </p> <p>10</p>
+                                <p>Média de Chamadas Mensal: </p> <p>10</p>
                             </div>
                         </div>
                     </div>
