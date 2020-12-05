@@ -1,11 +1,11 @@
 <?php
 header('Content-type: application/json');
 header('Access-Control-Allow-Origin: *');
-include '../models/usuario_model.php';
+include '../models/Client_model.php';
 $user=$_POST['user'];
 $pass=$_POST['pass'];
 
-$usuario = new Usuario($user,'');
+$usuario = new Client($user,'');
 if($user==$usuario->getEmail() && $pass ==$usuario->getPasswordClient()){
     $resposta = array('resposta'=>'1');
 }else{

@@ -2,7 +2,7 @@
 
 include 'conexao.php';
 
-class Usuario{
+class Client{
 
     public $id;
     private $email;
@@ -16,11 +16,11 @@ class Usuario{
     
 
 
-    public function Usuario($iden,$pass){
-        $this->montaUsuario($iden,$pass);
+    public function Client($iden,$pass){
+        $this->montaClient($iden,$pass);
     
     }
-    private function montaUsuario($iden,$pass){
+    private function montaClient($iden,$pass){
         $conexao = new Conexao();
 
         $consulta=$conexao->conecta()->query("SELECT * FROM Client WHERE Email='$iden'");
