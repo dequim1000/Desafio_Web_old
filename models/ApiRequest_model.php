@@ -69,20 +69,59 @@ class Apirequest{
     public function getPost(){
         return $this->postActions;
     }
-
-    public function URLTipo(){
-        $TipoUrl = "teste";
-        //$conexaoUrl = new Conexao();
-        //$TipoUrl = $conexaoUrl->conecta()->query("SELECT apr.ClientId as 'ID Client',
-        //apr.URL as 'URL' FROM ClientApiRequest as apr where apr.Id = '$idApirequest' ;");
-        return $TipoUrl;
-    }
     
-    public function trasDoBanco($tipoPlano, $planid, $clientid){
-                
-        if ($tipoPlano == '%/api/call/send%'){
+    public function trasDoBancoSMS($tipoPlano, $planid, $clientid){
 
-            $SQLTipo = " SELECT C.NAME AS 'CLIENTE'
+            $SQLTipo = "SELECT cp.ClientId as 'CLIENTID'
+                , PLA.ID AS 'PLANOID'
+                , PLA.NAME AS 'PLANONAME'
+                , PLA.PRICE AS 'PRICE'
+                , PLA.REQUESTQUANTITY AS 'REQUESTQUANTITY'
+                , CP.CLIENTID AS 'CLIENTID'
+                , cp.SMSCredits AS 'SMSCONTRATADOS'
+                , count(CPR.id) as 'UTILIZADOS'
+                , CPR.ID AS 'IDAPIREQUEST'
+                , CPR.URL AS 'URL'
+                , CPR.BODY AS 'BODY'
+                , CPR.RESPONSESTATUS AS 'RESPONSESTATUS'
+                , CPR.RESPONSEBODY AS 'RESPONSEBODY'
+                , CPR.POSTACTIONS AS 'POSTACTIONS'
+                , (cp.SMSCredits - count(CPR.id)) as 'RESTANTES'
+                , MONTH(DtRequest) as 'DTREQUEST'
+                    FROM ClientPlan as CP
+                    JOIN ClientApiRequest as CPR 
+                    on cp.ClientId = CPR.ClientId
+                    JOIN PLANX AS PLA
+                    ON PLA.ID = '$planid'
+                    WHERE CPR.ClientId  = '1'
+                    AND CPR.URL LIKE '%/api/sms/send%'
+                    AND CPR.RESPONSESTATUS = 200
+                    and Month(CPR.DtRequest) = month(sysdate())
+                    group by CPR.PlanId;";
+
+        try {
+            $conexao = new Conexao();
+            $consulta = $conexao->conecta()->query("".$SQLTipo);
+            $ret=array();
+                foreach($consulta as $api){
+                    $planx = new PlanX();
+                    $planx->fabricaPlanX($api['PLANOID'],$api['PLANONAME'],$api['REQUESTQUANTITY'],$api['PRICE']);
+                    $clientPlan = new ClientPlan();
+                    $clientPlan->fabricaClientPlan($api['CLIENTID'], $planx, $api['SMSCONTRATADOS']);
+                    $cliApi = new Apirequest();
+                    $cliApi->fabricaApirequest($api['IDAPIREQUEST'],$api['CLIENTID'],$planx, $api['DTREQUEST'],$api['URL'],$api['BODY'],$api['RESPONSESTATUS'],$api['UTILIZADOS'],$api['RESTANTES'],$api['RESPONSEBODY'],$api['POSTACTIONS'] );
+                    array_push($ret,$cliApi );
+                }
+
+                return $ret;
+        } catch (Exception $e) {
+            return $e;
+        }
+    }
+
+public function trasDoBancoCALL($tipoPlano, $planid, $clientid){
+
+	            $SQLTipo = " SELECT C.NAME AS 'CLIENTE'
             , PLA.ID AS 'PLANOID'
             , PLA.NAME AS 'PLANONAME'
             , PLA.PRICE AS 'PRICE'
@@ -115,38 +154,7 @@ class Apirequest{
         AND MONTH(CPR.DTREQUEST) = MONTH(SYSDATE())
     GROUP BY CPR.PLANID;";
 
-        }else if ($tipoPlano == '%/api/sms/send%'){
-            $SQLTipo = "SELECT cp.ClientId as 'CLIENTID'
-                , PLA.ID AS 'PLANOID'
-                , PLA.NAME AS 'PLANONAME'
-                , PLA.PRICE AS 'PRICE'
-                , PLA.REQUESTQUANTITY AS 'REQUESTQUANTITY'
-                , CP.CLIENTID AS 'CLIENTID'
-                , cp.SMSCredits AS 'SMSCONTRATADOS'
-                , count(CPR.id) as 'UTILIZADOS'
-                , CPR.ID AS 'IDAPIREQUEST'
-                , CPR.URL AS 'URL'
-                , CPR.BODY AS 'BODY'
-                , CPR.RESPONSESTATUS AS 'RESPONSESTATUS'
-                , CPR.RESPONSEBODY AS 'RESPONSEBODY'
-                , CPR.POSTACTIONS AS 'POSTACTIONS'
-                , (cp.SMSCredits - count(CPR.id)) as 'RESTANTES'
-                , MONTH(DtRequest) as 'DTREQUEST'
-                    FROM ClientPlan as CP
-                    JOIN ClientApiRequest as CPR 
-                    on cp.ClientId = CPR.ClientId
-                    JOIN PLANX AS PLA
-                    ON PLA.ID = '$planid'
-                    WHERE CPR.ClientId  = '1'
-                    AND CPR.URL LIKE '%/api/sms/send%'
-                    AND CPR.RESPONSESTATUS = 200
-                    and Month(CPR.DtRequest) = month(sysdate())
-                    group by CPR.PlanId;";
-        }else{
-            echo("PLANO NÃO ENCOTRADO");
-        }
-
-        try {
+ 	try {
             $conexao = new Conexao();
             $consulta = $conexao->conecta()->query("".$SQLTipo);
             $ret=array();
@@ -164,7 +172,6 @@ class Apirequest{
         } catch (Exception $e) {
             return $e;
         }
-    }
 }
 
 
