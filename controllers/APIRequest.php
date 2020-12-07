@@ -14,44 +14,44 @@ require_once '../models/ApiRequest_model.php';
     $consultaCALL = $apiRequest->trasDoBancoCALL($planId,$clientId);
     $retornoCALL = array();
 
-    foreach($consultaSMS as $p){
+    foreach($consultaSMS as $s){
         $retornoSMS[]=array(
-            'idApiRequest' =>$p->getId(),
-            'idClient' =>$p->getClientId(),
-            'idPlan' =>$p->getPlanId()->getId(),
-            'NamePlan' =>$p->getPlanId()->getName(),
-            'Dtrequest' =>$p->getDtrequest(),
-            'SMSCreditos' =>$p->getSMSCredits(),
-            'Url' =>$p->getUrl(),
-            'Body' =>$p->getBody(),
-            'Request' =>$p->getRequest(),
-            'Restante' =>$p->getRestantes(),
-            'ResponseBody' =>$p->getResponsebody(),
-            'ResponseStatus' =>$p->getStatus(),
-            'Post' =>$p->getPost(),
+            'idApiRequest' =>$s->getId(),
+            'idClient' =>$s->getClientId(),
+            'idPlan' =>$s->getPlanId()->getId(),
+            'NamePlan' =>$s->getPlanId()->getName(),
+            'Dtrequest' =>$s->getDtrequest(),
+            'Url' =>$s->getUrl(),
+            'Body' =>$s->getBody(),
+            'Request' =>$s->getRequest(),
+            'Restante' =>$s->getRestantes(),
+            'ResponseBody' =>$s->getResponsebody(),
+            'ResponseStatus' =>$s->getStatus(),
+            'Post' =>$s->getPost(),
         );
     }
 
-    foreach($consultaCALL as $p){
+    foreach($consultaCALL as $c){
         $retornoCALL[]=array(
-            'idApiRequest' =>$p->getId(),
-            'idClient' =>$p->getClientId(),
-            'idPlan' =>$p->getPlanId()->getId(),
-            'NamePlan' =>$p->getPlanId()->getName(),
-            'Quantidade Contratada Chamada' =>$p->getPlanId()->getRequestsQuantity(),
-            'Preço Chamada' =>$p->getPlanId()->getPrice(),
-            'Dtrequest' =>$p->getDtrequest(),
-            'SMSCreditos' =>$p->getSMSCredits(),
-            'Url' =>$p->getUrl(),
-            'Body' =>$p->getBody(),
-            'Request' =>$p->getRequest(),
-            'Restante' =>$p->getRestantes(),
-            'ResponseBody' =>$p->getResponsebody(),
-            'ResponseStatus' =>$p->getStatus(),
-            'Post' =>$p->getPost(),
+            'idApiRequest' =>$c->getId(),
+            'idClient' =>$c->getClientId(),
+            'idPlan' =>$c->getPlanId()->getId(),
+            'NamePlan' =>$c->getPlanId()->getName(),
+            'Quantidade Contratada Chamada' =>$c->getPlanId()->getRequestsQuantity(),
+            'Preço Chamada' =>$c->getPlanId()->getPrice(),
+            'Dtrequest' =>$c->getDtrequest(),
+            'Url' =>$c->getUrl(),
+            'Body' =>$c->getBody(),
+            'Request' =>$c->getRequest(),
+            'Restante' =>$c->getRestantes(),
+            'ResponseBody' =>$c->getResponsebody(),
+            'ResponseStatus' =>$c->getStatus(),
+            'Post' =>$c->getPost(),
         );
     }
 
     ob_clean();
-    echo json_encode($retorno);
+    echo json_encode($retornoSMS);
+
+    echo json_encode($retornoCALL);
 ?>

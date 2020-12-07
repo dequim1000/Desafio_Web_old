@@ -174,8 +174,8 @@ public function trasDoBancoCALL($planid, $clientid){
         }
 }
 
-
-
+}
+/*
 $tst= new Apirequest();
 $url = '%/api/call/send%';
 $x=$tst->trasDoBancoSMS(1,1);
@@ -196,8 +196,27 @@ foreach($x as $v){
     echo $v->getDtrequest();
     echo "<br>";
     echo $v->getUrl();
-    
+    echo "<br>";
 }
+$z=$tst->trasDoBancoCALL(1,1);
+foreach($z as $y){
+    echo "<br>";
+    echo $y->getId();
+    echo "<br>";
+    echo $y->getClientId();
+    echo "<br>";
+    echo $y->getPlanId()->getId();
+    echo "<br>";
+    echo $y->getPlanId()->getRequestsQuantity();
+    echo "<br>";
+    echo $y->getRequest();
+    echo "<br>";
+    echo $y->getRestantes();
+    echo "<br>";
+    echo $y->getDtrequest();
+    echo "<br>";
+    echo $y->getUrl();
+    echo "<br>";
 
-
+}*/
 ?>
