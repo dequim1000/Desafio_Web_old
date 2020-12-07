@@ -1,5 +1,5 @@
 <?php
-require_once 'Conexao.php';
+require_once 'conexao.php';
 require_once 'Client_model.php';
 
 class ClientApi{
