@@ -9,11 +9,31 @@ require_once '../models/ApiRequest_model.php';
     
     
     $apiRequest = new Apirequest();
-    $consulta = $apiRequest->trasDoBanco($url,$planId,$clientId);
-    $retorno = array();
+    $consultaSMS = $apiRequest->trasDoBancoSMS($planId,$clientId);
+    $retornoSMS = array();
+    $consultaCALL = $apiRequest->trasDoBancoCALL($planId,$clientId);
+    $retornoCALL = array();
 
-    foreach($consulta as $p){
-        $retorno[]=array(
+    foreach($consultaSMS as $p){
+        $retornoSMS[]=array(
+            'idApiRequest' =>$p->getId(),
+            'idClient' =>$p->getClientId(),
+            'idPlan' =>$p->getPlanId()->getId(),
+            'NamePlan' =>$p->getPlanId()->getName(),
+            'Dtrequest' =>$p->getDtrequest(),
+            'SMSCreditos' =>$p->getSMSCredits(),
+            'Url' =>$p->getUrl(),
+            'Body' =>$p->getBody(),
+            'Request' =>$p->getRequest(),
+            'Restante' =>$p->getRestantes(),
+            'ResponseBody' =>$p->getResponsebody(),
+            'ResponseStatus' =>$p->getStatus(),
+            'Post' =>$p->getPost(),
+        );
+    }
+
+    foreach($consultaCALL as $p){
+        $retornoCALL[]=array(
             'idApiRequest' =>$p->getId(),
             'idClient' =>$p->getClientId(),
             'idPlan' =>$p->getPlanId()->getId(),
