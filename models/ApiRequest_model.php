@@ -70,7 +70,7 @@ class Apirequest{
         return $this->postActions;
     }
     
-    public function trasDoBancoSMS($tipoPlano, $planid, $clientid){
+    public function trasDoBancoSMS($planid, $clientid){
 
             $SQLTipo = "SELECT cp.ClientId as 'CLIENTID'
                 , PLA.ID AS 'PLANOID'
@@ -119,7 +119,7 @@ class Apirequest{
         }
     }
 
-public function trasDoBancoCALL($tipoPlano, $planid, $clientid){
+public function trasDoBancoCALL($planid, $clientid){
 
 	            $SQLTipo = " SELECT C.NAME AS 'CLIENTE'
             , PLA.ID AS 'PLANOID'
@@ -178,7 +178,7 @@ public function trasDoBancoCALL($tipoPlano, $planid, $clientid){
 
 $tst= new Apirequest();
 $url = '%/api/call/send%';
-$x=$tst->trasDoBanco($url,1,1);
+$x=$tst->trasDoBancoSMS(1,1);
 foreach($x as $v){
     echo "<br>";
     echo $v->getId();
