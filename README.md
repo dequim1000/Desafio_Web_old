@@ -8,7 +8,7 @@ Projeto realizado pelos alunos:
 <p align="center">
    <img src="https://github.com/dequim1000/Desafio_Web/blob/main/images/Logo.png" width="500"/>   
 </p>
-<p align="center">:rocket: Formulário para cadastrar usuários em Arquivo.</p>
+<p align="center">:rocket: Trabalho de Faculdade referente a um dashboard.</p>
 
 # :computer: Tecnologias Utilizadas
 <ul>
