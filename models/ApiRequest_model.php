@@ -103,7 +103,7 @@ class Apirequest{
                     on cp.ClientId = CPR.ClientId
                     JOIN PLANX AS PLA
                     ON PLA.ID = '$planid'
-                    WHERE CPR.ClientId  = '1'
+                    WHERE CPR.ClientId  = '$clientid'
                     AND CPR.URL LIKE '%/api/sms/send%'
                     AND CPR.RESPONSESTATUS = 200
                     and Month(CPR.DtRequest) = month(sysdate())
