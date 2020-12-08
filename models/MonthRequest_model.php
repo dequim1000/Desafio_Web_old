@@ -61,8 +61,7 @@ class Monthrequest{
                     ON PLA.ID = '$planid'
                     WHERE CPR.ClientId  = '$clientid'
                     AND CPR.URL LIKE '%/api/sms/send%'
-                    AND CPR.RESPONSESTATUS = 200
-                    and Month(CPR.DtRequest) = month(sysdate())
+                    AND CPR.RESPONSESTATUS = 200                    
                     group by Month(CPR.DtRequest);";
 
         try {
@@ -104,8 +103,7 @@ public function trasDoBancoCALL($planid, $clientid){
         AND CPR.PLANID = PLA.ID
         WHERE CPR.CLIENTID = '$clientid'
         AND CPR.URL LIKE '%/api/call/send%'
-        AND CPR.RESPONSESTATUS = 200
-        AND MONTH(CPR.DTREQUEST) = MONTH(SYSDATE())
+        AND CPR.RESPONSESTATUS = 200        
     GROUP BY MONTH(CPR.DTREQUEST);";
 
  	try {
