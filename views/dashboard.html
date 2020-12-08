@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../plugins/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="../CSS/all.css">
+    
 </head>
 <body>
     <div class="flex-dashboard">
@@ -60,13 +61,13 @@
                                     <div class="card text-white bg-primary cdSMS" style="max-width: 18rem;">
                                         <div class="card-header">UTILIZADOS</div>
                                         <div class="card-body">
-                                            <h5 class="card-title">150</h5>
+                                            <h5 class="card-title" id="usadosSms"></h5>
                                         </div>
                                     </div>
                                     <div class="card text-white bg-warning cdSMS" style="max-width: 18rem;">
                                         <div class="card-header">RESTANTES</div>
                                         <div class="card-body">
-                                            <h5 class="card-title">500</h5>
+                                            <h5 class="card-title" id="restantesSms"></h5>
                                     </div>
                                 </div>
                             </div>
@@ -87,7 +88,7 @@
                                     <tbody>
                                         <tr>
                                             <th>Nome do Plano</td>
-                                            <td>APP 20</td>
+                                            <td id="PlanNameSms">APP 20</td>
                                             
                                         </tr>
 
@@ -116,20 +117,22 @@
                             <div class="dash-grafic">
                                 <a class="link-detalhes" href="planos.html"><h2>CHAMADAS EXCEDENTES</h2></a>
                                 <div id="donut_single_call"></div>
+                                <input type="text" id="restantesCall" hidden>
+                                <input type="text" id="usadosCall" hidden>
                             </div>
 
                             <div class="dash-info">
                                 <div class="contratado">
-                                    <h2>Contratado</h2>
-                                    <p>2000</p>
+                                    <h2>Restantes</h2>
+                                    <p id="Restantecall"></p>
                                 </div>
                                 <div class="utilizado">
                                     <h2>Utilizado</h2>
-                                    <p>300</p>
+                                    <p id="Utilizadocall"></p>
                                 </div>
                                 <div class="extras">
                                     <h2>Extras</h2>
-                                    <p>300</p>
+                                    <p id="Extrascall"></p>
                                 </div>
                             </div>
 
@@ -144,18 +147,18 @@
                                     <tbody>
                                         <tr>
                                             <th>Nome do Plano</td>
-                                            <td>APP 21</td>
+                                            <td id="PlanNameCall"></td>
                                             
                                         </tr>
 
                                         <tr>
                                             <th>Valor Mensal</td>
-                                            <td>R$1000,00</td>
+                                            <td id="PriceCall"></td>
                                         </tr>
 
                                         <tr>
                                             <th>Valor por Chamadas</td>
-                                            <td>R$0,25</td>
+                                            <td id="ValorChamada" ></td>
                                         </tr>
 
 
@@ -183,6 +186,6 @@
     <script src="../js/dashboard_sms.js"></script>
     <script src="../js/dashboard_call.js"></script>
     <script src="../js/menu_sidebar.js"></script>
-    
+    <script src="../js/planos.js"></script>
 </body>
 </html>

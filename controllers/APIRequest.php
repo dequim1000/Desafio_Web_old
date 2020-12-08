@@ -10,12 +10,12 @@ require_once '../models/ApiRequest_model.php';
     
     $apiRequest = new Apirequest();
     $consultaSMS = $apiRequest->trasDoBancoSMS($planId,$clientId);
-    $retornoSMS = array();
+    $retorno = array();
     $consultaCALL = $apiRequest->trasDoBancoCALL($planId,$clientId);
     $retornoCALL = array();
 
     foreach($consultaSMS as $s){
-        $retornoSMS[]=array(
+        $retorno[]=array(
             'idApiRequest' =>$s->getId(),
             'idClient' =>$s->getClientId(),
             'idPlan' =>$s->getPlanId()->getId(),
@@ -32,18 +32,20 @@ require_once '../models/ApiRequest_model.php';
     }
 
     foreach($consultaCALL as $c){
-        $retornoCALL[]=array(
+        $retorno[]=array(
             'idApiRequest' =>$c->getId(),
             'idClient' =>$c->getClientId(),
             'idPlan' =>$c->getPlanId()->getId(),
             'NamePlan' =>$c->getPlanId()->getName(),
-            'Quantidade Contratada Chamada' =>$c->getPlanId()->getRequestsQuantity(),
-            'Preço Chamada' =>$c->getPlanId()->getPrice(),
+            'ContractedQuantityCall' =>$c->getPlanId()->getRequestsQuantity(),
+            'PriceCall' =>$c->getPlanId()->getPrice(),
             'Dtrequest' =>$c->getDtrequest(),
             'Url' =>$c->getUrl(),
+            'PriceToCall' =>$c->getPriceCall(),
             'Body' =>$c->getBody(),
             'Request' =>$c->getRequest(),
             'Restante' =>$c->getRestantes(),
+            'Extras' =>$c->getExtras(),
             'ResponseBody' =>$c->getResponsebody(),
             'ResponseStatus' =>$c->getStatus(),
             'Post' =>$c->getPost(),
@@ -51,7 +53,5 @@ require_once '../models/ApiRequest_model.php';
     }
 
     ob_clean();
-    echo json_encode($retornoSMS);
-
-    echo json_encode($retornoCALL);
+    echo json_encode($retorno);
 ?>

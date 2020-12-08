@@ -11,6 +11,7 @@ class Apirequest{
     private $clientId;
     private $planId;
     private $dtRequest;
+    private $priceCall;
     private $url;
     private $body;
     private $responseStatus;
@@ -18,17 +19,20 @@ class Apirequest{
     private $postActions;
     private $requestPlan;
     private $restantePlan;
+    private $extrasPlan;
 
-    public function fabricaApirequest($id,$clientId,$planId,$dtRequest,$url,$body,$responseStatus,$requestPlan,$restantePlan,$responseBody,$postActions){
+    public function fabricaApirequest($id,$clientId,$planId,$dtRequest,$url,$priceCall,$body,$responseStatus,$requestPlan,$restantePlan,$extrasPlan,$responseBody,$postActions){
         $this->id=$id;
         $this->clientId=$clientId;
         $this->planId=$planId;
         $this->dtRequest=$dtRequest;
         $this->url=$url;
+        $this->priceCall=$priceCall;
         $this->body=$body;
         $this->responseStatus=$responseStatus;
         $this->requestPlan=$requestPlan;
         $this->restantePlan=$restantePlan;
+        $this->extrasPlan = $extrasPlan;
         $this->responseBody=$responseBody;
         $this->postActions=$postActions;
     }
@@ -51,6 +55,9 @@ class Apirequest{
     public function getUrl(){
         return $this->url;
     }
+    public function getPriceCall(){
+        return $this->priceCall;
+    }
     public function getBody(){
         return $this->body;
     }
@@ -62,6 +69,9 @@ class Apirequest{
     }
     public function getRestantes(){
         return $this->restantePlan;
+    }
+    public function getExtras(){
+        return $this->extrasPlan;
     }
     public function getResponsebody(){
         return $this->responseBody;
@@ -109,7 +119,7 @@ class Apirequest{
                     $clientPlan = new ClientPlan();
                     $clientPlan->fabricaClientPlan($api['CLIENTID'], $planx, $api['SMSCONTRATADOS']);
                     $cliApi = new Apirequest();
-                    $cliApi->fabricaApirequest($api['IDAPIREQUEST'],$api['CLIENTID'],$planx, $api['DTREQUEST'],$api['URL'],$api['BODY'],$api['RESPONSESTATUS'],$api['UTILIZADOS'],$api['RESTANTES'],$api['RESPONSEBODY'],$api['POSTACTIONS'] );
+                    $cliApi->fabricaApirequest($api['IDAPIREQUEST'],$api['CLIENTID'],$planx, $api['DTREQUEST'],$api['URL'],$api[''],$api['BODY'],$api['RESPONSESTATUS'],$api['UTILIZADOS'],$api['RESTANTES'],$api[''], $api['RESPONSEBODY'],$api['POSTACTIONS'] );
                     array_push($ret,$cliApi );
                 }
 
@@ -137,7 +147,7 @@ public function trasDoBancoCALL($planid, $clientid){
             , CPR.RESPONSEBODY AS 'RESPONSEBODY'
             , CPR.POSTACTIONS AS 'POSTACTIONS'
             , (PLA.REQUESTQUANTITY - COUNT(CPR.ID)) AS 'RESTANTES'
-            , (COUNT(CPR.ID) - PLA.REQUESTQUANTITY) * - 1 AS 'EXTRAS'
+            , (COUNT(CPR.ID) - PLA.REQUESTQUANTITY) AS 'EXTRAS'
             , (COUNT(CPR.ID) * (PLA.PRICE / PLA.REQUESTQUANTITY)) AS 'PREÇO TOTAL'
             , MONTH(DTREQUEST) AS 'DTREQUEST'
         FROM CLIENTPLAN AS CP
@@ -164,7 +174,7 @@ public function trasDoBancoCALL($planid, $clientid){
                     $clientPlan = new ClientPlan();
                     $clientPlan->fabricaClientPlan($api['CLIENTID'], $planx, $api['SMSCONTRATADOS']);
                     $cliApi = new Apirequest();
-                    $cliApi->fabricaApirequest($api['IDAPIREQUEST'],$api['CLIENTID'],$planx, $api['DTREQUEST'],$api['URL'],$api['BODY'],$api['RESPONSESTATUS'],$api['UTILIZADOS'],$api['RESTANTES'],$api['RESPONSEBODY'],$api['POSTACTIONS'] );
+                    $cliApi->fabricaApirequest($api['IDAPIREQUEST'],$api['CLIENTID'],$planx, $api['DTREQUEST'],$api['URL'],$api['UTIQUANTITY'],$api['BODY'],$api['RESPONSESTATUS'],$api['UTILIZADOS'],$api['RESTANTES'],$api['EXTRAS'],$api['RESPONSEBODY'],$api['POSTACTIONS'] );
                     array_push($ret,$cliApi );
                 }
 

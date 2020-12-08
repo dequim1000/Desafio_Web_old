@@ -1,33 +1,6 @@
 /*CHAMADAS EXECEDENTES*/
 
 /*Criação do gráfico rosquinha*/
-    google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawChartRosquinha);
- 
-    function drawChartRosquinha() {
- 
-         var tipos_call = google.visualization.arrayToDataTable([
-           ['Tipo', 'SMS'],
-           ['Contratado',     50],
-           ['Utilizado',    30],
-           ['Extras',     30],
-         ]);
- 
-         var quantidade_call = {
-           pieHole: 0.1,
-           pieSliceTextStyle: {
-             color: 'white',
-           },
-           fill: {
-             color: 'green'
-           },
-           legend: 'none', 
-           color: 'green'
-         };
- 
-         var chart_call = new google.visualization.PieChart(document.getElementById('donut_single_call'));
-         chart_call.draw(tipos_call, quantidade_call);
-    }
 
 /*Criação do gráfico tabela*/
  google.charts.load('49', {'packages': ['vegachart']}).then(drawChartTable);
