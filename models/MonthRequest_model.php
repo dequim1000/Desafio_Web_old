@@ -71,11 +71,11 @@ class Monthrequest{
             $ret=array();
                 foreach($consulta as $api){
                     $planx = new PlanX();
-                    $planx->fabricaPlanX($api['PLANOID'],$api['PLANONAME'],$api['REQUESTQUANTITY'],$api['PRICE']);
+                    $planx->fabricaPlanX($api['PLANOID'],$api[''],$api[''],$api['']);
                     $clientPlan = new ClientPlan();
-                    $clientPlan->fabricaClientPlan($api['CLIENTID'], $planx, $api['SMSCONTRATADOS']);
+                    $clientPlan->fabricaClientPlan($api['CLIENTID'], $planx, $api['']);
                     $cliApi = new Apirequest();
-                    $cliApi->fabricaApirequest($api['IDAPIREQUEST'],$api['CLIENTID'],$planx, $api['DTREQUEST'],$api['URL'],$api[''],$api['BODY'],$api['RESPONSESTATUS'],$api['UTILIZADOS'],$api['RESTANTES'],$api[''], $api['RESPONSEBODY'],$api['POSTACTIONS'] );
+                    $cliApi->fabricaApirequest($api['IDAPIREQUEST'],$api['CLIENTID'],$planx, $api['DTREQUEST'],$api['URL'],$api[''],$api[''],$api[''],$api['UTILIZADOS'],$api[''],$api[''], $api[''],$api[''] );
                     array_push($ret,$cliApi );
                 }
 
@@ -87,24 +87,12 @@ class Monthrequest{
 
 public function trasDoBancoCALL($planid, $clientid){
 
-	            $SQLTipo = " SELECT C.NAME AS 'CLIENTE'
+	            $SQLTipo = " SELECT CP.CLIENTID AS 'CLIENTID'
             , PLA.ID AS 'PLANOID'
-            , PLA.NAME AS 'PLANONAME'
-            , PLA.PRICE AS 'PRICE'
             , PLA.REQUESTQUANTITY AS 'REQUESTQUANTITY'
-            , (PLA.PRICE / PLA.REQUESTQUANTITY) AS 'UTIQUANTITY'
             , COUNT(CPR.ID) AS 'UTILIZADOS'
-            , CP.SMSCREDITS AS 'SMSCONTRATADOS'
-            , CP.CLIENTID AS 'CLIENTID'
             , CPR.ID AS 'IDAPIREQUEST'
             , CPR.URL AS 'URL'
-            , CPR.BODY AS 'BODY'
-            , CPR.RESPONSESTATUS AS 'RESPONSESTATUS'
-            , CPR.RESPONSEBODY AS 'RESPONSEBODY'
-            , CPR.POSTACTIONS AS 'POSTACTIONS'
-            , (PLA.REQUESTQUANTITY - COUNT(CPR.ID)) AS 'RESTANTES'
-            , (COUNT(CPR.ID) - PLA.REQUESTQUANTITY) AS 'EXTRAS'
-            , (COUNT(CPR.ID) * (PLA.PRICE / PLA.REQUESTQUANTITY)) AS 'PREÇO TOTAL'
             , MONTH(DTREQUEST) AS 'DTREQUEST'
         FROM CLIENTPLAN AS CP
         JOIN CLIENT AS C
@@ -118,7 +106,7 @@ public function trasDoBancoCALL($planid, $clientid){
         AND CPR.URL LIKE '%/api/call/send%'
         AND CPR.RESPONSESTATUS = 200
         AND MONTH(CPR.DTREQUEST) = MONTH(SYSDATE())
-    GROUP BY CPR.PLANID;";
+    GROUP BY MONTH(CPR.DTREQUEST);";
 
  	try {
             $conexao = new Conexao();
@@ -126,11 +114,11 @@ public function trasDoBancoCALL($planid, $clientid){
             $ret=array();
                 foreach($consulta as $api){
                     $planx = new PlanX();
-                    $planx->fabricaPlanX($api['PLANOID'],$api['PLANONAME'],$api['REQUESTQUANTITY'],$api['PRICE']);
+                    $planx->fabricaPlanX($api['PLANOID'],$api[''],$api[''],$api['']);
                     $clientPlan = new ClientPlan();
-                    $clientPlan->fabricaClientPlan($api['CLIENTID'], $planx, $api['SMSCONTRATADOS']);
+                    $clientPlan->fabricaClientPlan($api['CLIENTID'], $planx, $api['']);
                     $cliApi = new Apirequest();
-                    $cliApi->fabricaApirequest($api['IDAPIREQUEST'],$api['CLIENTID'],$planx, $api['DTREQUEST'],$api['URL'],$api['UTIQUANTITY'],$api['BODY'],$api['RESPONSESTATUS'],$api['UTILIZADOS'],$api['RESTANTES'],$api['EXTRAS'],$api['RESPONSEBODY'],$api['POSTACTIONS'] );
+                    $cliApi->fabricaApirequest($api['IDAPIREQUEST'],$api['CLIENTID'],$planx, $api['DTREQUEST'],$api['URL'],$api[''],$api[''],$api[''],$api['UTILIZADOS'],$api[''],$api[''], $api[''],$api[''] );
                     array_push($ret,$cliApi );
                 }
 
