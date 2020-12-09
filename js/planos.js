@@ -34,10 +34,9 @@ function drawChartRosquinha() {
 
 var restante = 0;
 var utilizado = 0;
+//Alimentar os 2 primeiros gráficos e as tabelas de Resumo
 function ApiRequest(){
     fetch("http://localhost/Desafio_Web/controllers/APIRequest.php").then(json=>json.json()).then(function(x){
-        console.log(x[0].Request);
-        console.log(x[1].Request);
         document.getElementById("usadosSms").innerHTML = x[0].Request;
         document.getElementById("restantesSms").innerHTML = x[0].Restante;
         document.getElementById("PlanNameSms").innerHTML = x[0].NamePlan;
@@ -62,6 +61,7 @@ function ApiRequest(){
             document.getElementById("Extrascall").innerHTML = 0;
         }
     });
+    
     
 }
 var x = [];
