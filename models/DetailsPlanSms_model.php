@@ -88,7 +88,7 @@ class DetailsSms{
                     $planx->fabricaPlanX($api['PLANOID'],$api['PLANONAME'],$api['REQUESTQUANTITY'],$api['PRICE']);
                     $clientPlan = new ClientPlan();
                     $clientPlan->fabricaClientPlan($api['CLIENTID'], $planx, $api['SMSCONTRATADOS']);
-                    $cliApi = new Apirequest();
+                    $cliApi = new DetailsSms();
                     $cliApi->fabricaDetailsSms($api['IDAPIREQUEST'],$api['CLIENTID'],$planx, $api['DTREQUEST'],$api['URL'],$api['UTILIZADOS'],$api['RESTANTES']);
                     array_push($ret,$cliApi );
                 }
