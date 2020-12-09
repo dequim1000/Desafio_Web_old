@@ -76,7 +76,7 @@ class DetailsSms{
                     WHERE CPR.ClientId  = '$clientid'
                     AND CPR.URL LIKE '%/api/sms/send%'
                     AND CPR.RESPONSESTATUS = 200
-                    and Month(CPR.DtRequest) = month('$mesSelect')
+                    and Month(CPR.DtRequest) = '$mesSelect'
                     group by CPR.PlanId;";
 
         try {
