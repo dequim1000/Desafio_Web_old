@@ -109,7 +109,7 @@ class DetailsCall{
         WHERE CPR.CLIENTID = '$clientid'
         AND CPR.URL LIKE '%/api/call/send%'
         AND CPR.RESPONSESTATUS = 200
-        AND MONTH(CPR.DTREQUEST) = MONTH('$mesSelect')
+        AND MONTH(CPR.DTREQUEST) = '$mesSelect'
     GROUP BY CPR.PLANID;";
 
  	try {
