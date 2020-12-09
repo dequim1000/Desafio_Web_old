@@ -8,17 +8,17 @@ require_once '../models/MonthRequest_model.php';
     $clientId =1;
     
     
-    $apiRequest = new Apirequest();
-    $consultaSMS = $apiRequest->trasDoBancoSMS($planId,$clientId);
+    $monthrequest = new Monthrequest();
+    $consultaSMS = $monthrequest->trasDoBancoSMS($planId,$clientId);
     $retorno = array();
-    $consultaCALL = $apiRequest->trasDoBancoCALL($planId,$clientId);
+    $consultaCALL = $monthrequest->trasDoBancoCALL($planId,$clientId);
     $retornoCALL = array();
 
     foreach($consultaSMS as $s){
         $retorno[]=array(
             'idApiRequest' =>$s->getId(),
             'idClient' =>$s->getClientId(),
-            'idPlan' =>$s->getPlanId()->getId(),
+            'idPlan' =>$s->getPlanId(),
             'Dtrequest' =>$s->getDtrequest(),
             'Url' =>$s->getUrl(),
             'Request' =>$s->getRequest(),
@@ -30,7 +30,7 @@ require_once '../models/MonthRequest_model.php';
         $retorno[]=array(
             'idApiRequest' =>$c->getId(),
             'idClient' =>$c->getClientId(),
-            'idPlan' =>$c->getPlanId()->getId(),
+            'idPlan' =>$c->getPlanId(),
             'Dtrequest' =>$c->getDtrequest(),
             'Url' =>$c->getUrl(),
             'Request' =>$c->getRequest(),

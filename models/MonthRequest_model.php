@@ -14,7 +14,7 @@ class Monthrequest{
     private $url;
     private $requestPlan;
 
-    public function Monthrequest($id,$clientId,$planId,$dtRequest,$url,$requestPlan){
+    public function fabricaMonthrequest($id,$clientId,$planId,$dtRequest,$url,$requestPlan){
         $this->id=$id;
         $this->clientId=$clientId;
         $this->planId=$planId;
@@ -69,15 +69,10 @@ class Monthrequest{
             $consulta = $conexao->conecta()->query("".$SQLTipo);
             $ret=array();
                 foreach($consulta as $api){
-                    $planx = new PlanX();
-                    $planx->fabricaPlanX($api['PLANOID'],$api[''],$api[''],$api['']);
-                    $clientPlan = new ClientPlan();
-                    $clientPlan->fabricaClientPlan($api['CLIENTID'], $planx, $api['']);
-                    $cliApi = new Apirequest();
-                    $cliApi->fabricaApirequest($api['IDAPIREQUEST'],$api['CLIENTID'],$planx, $api['DTREQUEST'],$api['URL'],$api[''],$api[''],$api[''],$api['UTILIZADOS'],$api[''],$api[''], $api[''],$api[''] );
+                    $cliApi = new Monthrequest();
+                    $cliApi->fabricaMonthrequest($api['IDREQUEST'],$api['CLIENTID'],$api['PLANOID'], $api['DTREQUEST'],$api['URL'],$api['UTILIZADOS']);
                     array_push($ret,$cliApi );
                 }
-
                 return $ret;
         } catch (Exception $e) {
             return $e;
@@ -86,7 +81,7 @@ class Monthrequest{
 
 public function trasDoBancoCALL($planid, $clientid){
 
-	            $SQLTipo = " SELECT CP.CLIENTID AS 'CLIENTID'
+	    $SQLTipo = " SELECT CP.CLIENTID AS 'CLIENTID'
             , PLA.ID AS 'PLANOID'
             , PLA.REQUESTQUANTITY AS 'REQUESTQUANTITY'
             , COUNT(CPR.ID) AS 'UTILIZADOS'
@@ -111,12 +106,8 @@ public function trasDoBancoCALL($planid, $clientid){
             $consulta = $conexao->conecta()->query("".$SQLTipo);
             $ret=array();
                 foreach($consulta as $api){
-                    $planx = new PlanX();
-                    $planx->fabricaPlanX($api['PLANOID'],$api[''],$api[''],$api['']);
-                    $clientPlan = new ClientPlan();
-                    $clientPlan->fabricaClientPlan($api['CLIENTID'], $planx, $api['']);
-                    $cliApi = new Apirequest();
-                    $cliApi->fabricaApirequest($api['IDAPIREQUEST'],$api['CLIENTID'],$planx, $api['DTREQUEST'],$api['URL'],$api[''],$api[''],$api[''],$api['UTILIZADOS'],$api[''],$api[''], $api[''],$api[''] );
+                    $cliApi = new Monthrequest();
+                    $cliApi->fabricaMonthrequest($api['IDAPIREQUEST'],$api['CLIENTID'],$api['PLANOID'], $api['DTREQUEST'],$api['URL'],$api['UTILIZADOS']);                    
                     array_push($ret,$cliApi );
                 }
 

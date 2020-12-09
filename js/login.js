@@ -1,3 +1,4 @@
+
 function helpEmail(){
     if (document.getElementById("inputEmail").value  != ""){
         document.querySelector("#emailHelp").hidden = true;
