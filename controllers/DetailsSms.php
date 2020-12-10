@@ -4,8 +4,8 @@ header('Access-Control-Allow-Origin: *');
 require_once '../models/DetailsPlanSms_model.php';
 
     $user = $_POST['user'];
-    $planId= 1;
-    $clientId =1;
+    $planId= $_POST['idClient'];
+    $clientId = $_POST['idClient'];
     $mesSelect = $_POST['mes'];
     $anoSelect = $_POST['ano'];
     

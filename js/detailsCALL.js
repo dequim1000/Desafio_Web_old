@@ -9,6 +9,7 @@ function pegardata(){
         data.append('mes',dataCall[1])        
         data.append('user',sessionStorage.getItem('user'))
         data.append('pass',sessionStorage.getItem('pass'))
+        data.append('idClient',sessionStorage.getItem('idClient'))
 
         
             axios.post('http://localhost/Desafio_Web/controllers/DetailsCall.php',data).then(function (x){

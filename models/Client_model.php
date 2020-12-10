@@ -12,10 +12,6 @@ class Client{
     private $NameClient;
     private $phone;
 
-
-    
-
-
     public function Client($iden,$pass){
         $this->montaClient($iden,$pass);
     

@@ -187,8 +187,11 @@ function drawChartTableSMS(t) {
     }
    
     function DataTabelaSMS(){
-        
-        fetch("http://localhost/Desafio_Web/controllers/MonthRequest_controllers.php").then(json=>json.json()).then(function(x){
+        let data = new FormData();
+        data.append('user',sessionStorage.getItem('user'))
+        data.append('pass',sessionStorage.getItem('pass'))
+        data.append('idClient',sessionStorage.getItem('idClient'))
+        axios.post('http://localhost/Desafio_Web/controllers/MonthRequest_controllers.php',data).then(function (x){
                 var dataTable_sms = new google.visualization.DataTable();
                 dataTable_sms.addColumn({type: 'string', 'id': 'category'});
                 dataTable_sms.addColumn({type: 'number', 'id': 'amount'});
@@ -197,7 +200,7 @@ function drawChartTableSMS(t) {
                 var somaSms = 0;
                 var MediaSms = 0;
                 var MediaSmsFormat = 0;
-                x.forEach((el) => {
+                x.data.forEach((el) => {
                     if (el.Url === '/api/sms/send'){
                         usado.push([el.Dtrequest,Number (el.Request)]);
                         somaSms = somaSms + Number(el.Request);
@@ -212,8 +215,11 @@ function drawChartTableSMS(t) {
     }
 
     function DataTabelaCALL(){
-        
-        fetch("http://localhost/Desafio_Web/controllers/MonthRequest_controllers.php").then(json=>json.json()).then(function(x){
+        let data = new FormData();
+        data.append('user',sessionStorage.getItem('user'))
+        data.append('pass',sessionStorage.getItem('pass'))
+        data.append('idClient',sessionStorage.getItem('idClient'))
+        axios.post('http://localhost/Desafio_Web/controllers/MonthRequest_controllers.php',data).then(function (x){
                 var dataTable_sms = new google.visualization.DataTable();
                 dataTable_sms.addColumn({type: 'string', 'id': 'category'});
                 dataTable_sms.addColumn({type: 'number', 'id': 'amount'});
@@ -221,7 +227,7 @@ function drawChartTableSMS(t) {
                 var somaCall = 0;
                 var MediaCall = 0;
                 var MediacallFormat = 0;
-                x.forEach((el) => {
+                x.data.forEach((el) => {
                     if (el.Url === '/api/call/send'){
                     usado.push([el.Dtrequest,Number (el.Request)]);
                     somaCall = somaCall + Number(el.Request);
@@ -232,6 +238,12 @@ function drawChartTableSMS(t) {
                 MediacallFormat = MediaCall.toFixed(2)
                 document.getElementById("MediaCall").innerHTML = MediacallFormat;
         });
+        /*let data = new FormData();
+        data.append('user',sessionStorage.getItem('user'))
+        data.append('pass',sessionStorage.getItem('pass'))
+        data.append('idClient',sessionStorage.getItem('idClient'))
+        axios.post('http://localhost/Desafio_Web/controllers/MonthRequest_controllers.php',data).then(function (x){
+        });*/
     }
  
     

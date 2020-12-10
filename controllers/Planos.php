@@ -3,8 +3,8 @@ header('Content-type: application/json');
 header('Access-Control-Allow-Origin: *');
 require_once '../models/ClientPlan_model.php';
 
-    $user = 'dequimdeveloper@gmail.com';
-
+    $user = $_POST['user'];
+    
     $clientPlan = new ClientPlan();
     $consulta = $clientPlan->trasDoBanco($user);
     $retorno = array();

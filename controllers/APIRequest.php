@@ -3,9 +3,9 @@ header('Content-type: application/json');
 header('Access-Control-Allow-Origin: *');
 require_once '../models/ApiRequest_model.php';
 
-    $user = 'dequimdeveloper@gmail.com';
-    $planId= 1;
-    $clientId =1;
+    $user = $_POST['user'];
+    $planId= $_POST['idClient'];
+    $clientId = $_POST['idClient'];
     
     
     $apiRequest = new Apirequest();
