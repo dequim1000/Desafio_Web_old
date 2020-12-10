@@ -50,6 +50,45 @@
     text-align: center;
     border-color: #264a68;
 }
+
+#pesquisarSMS{
+    margin: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #264a68;
+}
+
+#pesquisarSMS:hover{
+    transform: scale(1.20);
+    transition: .2s;
+}
+
+#pesquisarCALL{
+    margin: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #264a68;
+}
+
+#pesquisarCALL:hover{
+    transform: scale(1.20);
+    transition: .2s;
+}
+
+.fa-search{
+    color: aliceblue;
+}
+
+
+.fa-search:hover{
+    color: firebrick;
+    transform: scale(1.03);
+    transition: .2s;
+}
+
+
 @media screen and  (max-width: 1070px){
     .tables{
         flex-wrap: wrap;
@@ -72,6 +111,10 @@
         justify-content: flex-start;
         flex-wrap: wrap;
     }
+
+    #data-plano {
+        width: 150px;
+    }
 }
 
 @media screen and  (max-width: 330px){
@@ -83,5 +126,9 @@
     .column-content{
         justify-content: flex-start;
         flex-wrap: wrap;
+    }
+
+    #data-plano {
+        width: 110px;
     }
 }

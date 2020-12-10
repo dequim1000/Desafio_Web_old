@@ -183,3 +183,37 @@ SELECT cp.ClientId, cp.NamePlan, count(cpr.id) as "utilizados", dayofweek(dt_req
 		And Month(cpr.dt_request) = month(sysdate())
     group by cpr.PlanId, cpr.dt_request
 ;
+
+SELECT C.NAME AS 'CLIENTE'
+            , PLA.ID AS 'PLANOID'
+            , PLA.NAME AS 'PLANONAME'
+            , PLA.PRICE AS 'PRICE'
+            , PLA.REQUESTQUANTITY AS 'REQUESTQUANTITY'
+            , (PLA.PRICE / PLA.REQUESTQUANTITY) AS 'UTIQUANTITY'
+            , COUNT(CPR.ID) AS 'UTILIZADOS'
+            , CP.SMSCREDITS AS 'SMSCONTRATADOS'
+            , CP.CLIENTID AS 'CLIENTID'
+            , CPR.ID AS 'IDAPIREQUEST'
+            , CPR.URL AS 'URL'
+            , CPR.BODY AS 'BODY'
+            , CPR.RESPONSESTATUS AS 'RESPONSESTATUS'
+            , CPR.RESPONSEBODY AS 'RESPONSEBODY'
+            , CPR.POSTACTIONS AS 'POSTACTIONS'
+            , (PLA.REQUESTQUANTITY - COUNT(CPR.ID)) AS 'RESTANTES'
+            , (COUNT(CPR.ID) - PLA.REQUESTQUANTITY) AS 'EXTRAS'
+            , (COUNT(CPR.ID) * (PLA.PRICE / PLA.REQUESTQUANTITY)) AS 'PREÇO TOTAL'
+            , MONTH(DTREQUEST) AS 'DTREQUEST'
+        FROM CLIENTPLAN AS CP
+        JOIN CLIENT AS C
+        ON C.ID = CP.CLIENTID
+        JOIN PLANX AS PLA
+        ON PLA.ID = 1
+        JOIN CLIENTAPIREQUEST AS CPR
+        ON CPR.CLIENTID = CP.CLIENTID
+        AND CPR.PLANID = PLA.ID
+        WHERE CPR.CLIENTID = 1
+        AND CPR.URL LIKE '%/api/call/send%'
+        AND CPR.RESPONSESTATUS = 200
+        AND MONTH(CPR.DTREQUEST) = 12 
+        AND YEAR= 2019
+    GROUP BY CPR.PLANID;

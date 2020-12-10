@@ -77,9 +77,8 @@ class DetailsCall{
         return $this->postActions;
     }
     
-   public function trasDoBancoCALL($planid, $clientid, $mesSelect){
-
-	            $SQLTipo = " SELECT C.NAME AS 'CLIENTE'
+   public function trasDoBancoCALL($planid, $clientid, $mesSelect, $anoSelect){
+        $SQLTipo = " SELECT C.NAME AS 'CLIENTE'
             , PLA.ID AS 'PLANOID'
             , PLA.NAME AS 'PLANONAME'
             , PLA.PRICE AS 'PRICE'
@@ -109,7 +108,8 @@ class DetailsCall{
         WHERE CPR.CLIENTID = '$clientid'
         AND CPR.URL LIKE '%/api/call/send%'
         AND CPR.RESPONSESTATUS = 200
-        AND MONTH(CPR.DTREQUEST) = '$mesSelect'
+        AND MONTH(CPR.DTREQUEST) = $mesSelect
+        AND YEAR(CPR.DTREQUEST) = $anoSelect
     GROUP BY CPR.PLANID;";
 
  	try {
@@ -122,10 +122,9 @@ class DetailsCall{
                     $clientPlan = new ClientPlan();
                     $clientPlan->fabricaClientPlan($api['CLIENTID'], $planx, $api['SMSCONTRATADOS']);
                     $cliApi = new DetailsCall();
-                    $cliApi->fabricaDetailsCall($api['IDAPIREQUEST'],$api['CLIENTID'],$planx, $api['DTREQUEST'],$api['URL'],$api['UTIQUANTITY'],$api['BODY'],$api['UTILIZADOS'],$api['RESTANTES'],$api['EXTRAS']);
+                    $cliApi->fabricaDetailsCall($api['IDAPIREQUEST'],$api['CLIENTID'],$planx, $api['DTREQUEST'],$api['URL'],$api['UTIQUANTITY'],$api['UTILIZADOS'],$api['RESTANTES'],$api['EXTRAS']);
                     array_push($ret,$cliApi );
                 }
-
                 return $ret;
         } catch (Exception $e) {
             return $e;

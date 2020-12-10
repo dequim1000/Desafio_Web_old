@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../plugins/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="../CSS/all.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <div class="flex-dashboard">
@@ -52,7 +53,7 @@
                 </div>
                 <div class="row-content">
                     <h3 class="font-primaria">Mês/Ano</h3>
-                    <input onchange="pegardata()" id="data-plano" type="month">
+                    <input id="data-plano" type="month"><button id="pesquisarSMS" onclick="pegardata()"><i class="fas fa-search"></i></button>
                 </div>
                 <div class="column-content">
                     <div class="font-plano"><h3>Detalhes do Meu SMS em</h3></div>
@@ -69,9 +70,9 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>APP20</td>
+                                <td id="nameSms">-</td>
                                 <td>R$ 500,00</td>
-                                <td>1000</td>
+                                <td id="SmsContracted">-</td>
                             </tr>
                         </tbody>
                     </table>
@@ -90,9 +91,9 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>600</td>
-                                <td>100</td>
-                                <td>500</td>  
+                                <td id="SmsTotal">-</td>
+                                <td id="UsadoSms">-</td>
+                                <td id="RestSms">-</td>  
                           </tr>
                         </tbody>
                     </table>
@@ -117,10 +118,8 @@
     <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="../plugins/fontawesome/js/all.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="../js/dashboard_sms.js"></script>
-    <script src="../js/dashboard_call.js"></script>
     <script src="../js/menu_sidebar.js"></script>
-    <script src="../js/planos.js"></script>
+     <script src="../js/detailsSMS.js"></script>
     
 </body>
 </html>

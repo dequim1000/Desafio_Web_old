@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../plugins/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="../CSS/all.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <div class="flex-dashboard">
@@ -52,7 +53,7 @@
                 </div>
                 <div class="row-content">
                     <h3 class="font-primaria">Mês/Ano</h3>
-                    <input onchange="pegardata()" id="data-plano" type="month">
+                    <input id="data-plano" type="month"><button id="pesquisarCALL" onclick="pegardata()"><i class="fas fa-search"></i></button>
                 </div>
                 <div class="column-content">
                     <div class="font-plano"><h3>Detalhes das minhas Chamadas em</h3></div>
@@ -70,10 +71,10 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>APP20</td>
-                                <td>R$ 500,00</td>
-                                <td>R$ 5000,00</td>
-                                <td>1000</td>
+                                <td id="nameCalldetails">-</td>
+                                <td id="valormensalCalldetails">-</td>
+                                <td id="valoradcionalCalldetails">-</td>
+                                <td id="qtdeextraCalldetails">-</td>
                             </tr>
                         </tbody>
                     </table>
@@ -93,10 +94,10 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>10.000</td>
-                                <td>10.000</td>
-                                <td>10.000</td>
-                                <td>1000</td>
+                                <td id="qtdeContratadaCall">-</td>
+                                <td id="usadosCall">-</td>
+                                <td id="disponivelCall">-</td>
+                                <td id="ExtrasCall">-</td>
                           </tr>
                         </tbody>
                     </table>
@@ -113,9 +114,9 @@
                         </thead>
                         <tbody>
                             <tr>                                
-                                <td>R$ 500,00</td>
-                                <td>R$ 0,10</td>
-                                <td>R$ 500,00</td>
+                                <td id="mesalCall">-</td>
+                                <td id="valorExtraCall">-</td>
+                                <td id="valorTotalCall">-</td>
                           </tr>
                         </tbody>
                     </table>
@@ -125,10 +126,8 @@
     <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="../plugins/fontawesome/js/all.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="../js/dashboard_sms.js"></script>
-    <script src="../js/dashboard_call.js"></script>
     <script src="../js/menu_sidebar.js"></script>
-    <script src="../js/planos.js"></script>
+    <script src="../js/detailsCALL.js"></script>
     
 </body>
 </html>

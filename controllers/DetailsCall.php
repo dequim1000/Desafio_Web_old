@@ -3,14 +3,14 @@ header('Content-type: application/json');
 header('Access-Control-Allow-Origin: *');
 require_once '../models/DetailsPlanCall_model.php';
 
-    $user = 'dequimdeveloper@gmail.com';
+    $user = $_POST['user'];
     $planId= 1;
     $clientId =1;
-    $mesSelect = '2020-12';
-    
-    
+    $mesSelect = $_POST['mes'];
+    $anoSelect = $_POST['ano'];
+
     $detailscall = new DetailsCall();
-    $consultaCALL = $detailscall->trasDoBancoCALL($planId,$clientId,$mesSelect);
+    $consultaCALL = $detailscall->trasDoBancoCALL($planId,$clientId,$mesSelect,$anoSelect);
     $retorno = array();
 
      foreach($consultaCALL as $c){
@@ -24,13 +24,9 @@ require_once '../models/DetailsPlanCall_model.php';
             'Dtrequest' =>$c->getDtrequest(),
             'Url' =>$c->getUrl(),
             'PriceToCall' =>$c->getPriceCall(),
-            'Body' =>$c->getBody(),
             'Request' =>$c->getRequest(),
             'Restante' =>$c->getRestantes(),
             'Extras' =>$c->getExtras(),
-            'ResponseBody' =>$c->getResponsebody(),
-            'ResponseStatus' =>$c->getStatus(),
-            'Post' =>$c->getPost(),
         );
     }
 

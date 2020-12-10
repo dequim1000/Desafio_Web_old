@@ -3,14 +3,14 @@ header('Content-type: application/json');
 header('Access-Control-Allow-Origin: *');
 require_once '../models/DetailsPlanSms_model.php';
 
-    $user = 'dequimdeveloper@gmail.com';
+    $user = $_POST['user'];
     $planId= 1;
     $clientId =1;
-    $mesSelect = '2020-12';
-    
+    $mesSelect = $_POST['mes'];
+    $anoSelect = $_POST['ano'];
     
     $detailsSMS = new DetailsSms();
-    $consultaSMS = $detailsSMS->trasDoBancoSMS($planId,$clientId,$mesSelect);
+    $consultaSMS = $detailsSMS->trasDoBancoSMS($planId,$clientId,$mesSelect,$anoSelect);
     $retorno = array();
 
     foreach($consultaSMS as $s){
@@ -21,12 +21,8 @@ require_once '../models/DetailsPlanSms_model.php';
             'NamePlan' =>$s->getPlanId()->getName(),
             'Dtrequest' =>$s->getDtrequest(),
             'Url' =>$s->getUrl(),
-            'Body' =>$s->getBody(),
             'Request' =>$s->getRequest(),
             'Restante' =>$s->getRestantes(),
-            'ResponseBody' =>$s->getResponsebody(),
-            'ResponseStatus' =>$s->getStatus(),
-            'Post' =>$s->getPost(),
         );
     }
 
