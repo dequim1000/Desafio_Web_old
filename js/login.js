@@ -20,7 +20,7 @@ let button = document.querySelector('form button.btn');
                     location.href = "views/dashboard.html"
                     sessionStorage.setItem('user',document.getElementById('inputEmail').value)
                     sessionStorage.setItem('pass',document.getElementById('inputSenha').value)
-                    sessionStorage.setItem('idClient',data.idClient)
+                    sessionStorage.setItem('idClient',x.data.idClient)
                 }else{
                     document.querySelector("#passError").hidden = false;
                 }
