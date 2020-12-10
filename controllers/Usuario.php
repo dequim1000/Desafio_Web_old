@@ -9,8 +9,8 @@ include '../models/Client_model.php';
 $usuario = new Client($user,'');
 
     if($user==$usuario->getEmail() && $pass ==$usuario->getPasswordClient()){
-        $resposta = array('resposta'=>'1');
-        //$resposta = array('idClient'=>$usuario->getId()),
+        $resposta = array('resposta'=>'1',
+        'idClient'=>$usuario->getId());
     }else{
         $resposta = array('resposta'=>'0');
     }
