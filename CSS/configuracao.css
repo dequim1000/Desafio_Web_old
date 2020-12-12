@@ -87,9 +87,17 @@
     color:  red;
 }
 
+@media screen and  (max-width: 500px){
+    #ulText{
+        width: 300px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
 @media screen and  (max-width: 400px){
     .form-control{
-        width: 320px;
+        width: 300px;
     }
     .btnLoginProvedor{
         margin-left: 90px;
