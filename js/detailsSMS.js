@@ -13,13 +13,35 @@ function pegardata(){
 
         
             axios.post('http://localhost/Desafio_Web/controllers/DetailsSms.php',data).then(function (x){
-                    document.getElementById("nameSms").innerHTML = x.data[0].NamePlan;
-                    document.getElementById("UsadoSms").innerHTML = x.data[0].Request;
-                    document.getElementById("RestSms").innerHTML = x.data[0].Restante;
-                    Resquest = x.data[0].Request;
-                    Restante = x.data[0].Restante;
-                    SmsCredtis = (Number(Resquest) + Number(Restante))
-                    document.getElementById("SmsContracted").innerHTML = SmsCredtis
-                    document.getElementById("SmsTotal").innerHTML = SmsCredtis
-            })
+            try {
+                document.getElementById("nameSms").innerHTML = "";
+                document.getElementById("UsadoSms").innerHTML = x.data[0].Request;
+                document.getElementById("RestSms").innerHTML = x.data[0].Restante;
+                Resquest = x.data[0].Request;
+                Restante = x.data[0].Restante;
+                SmsCredtis = (Number(Resquest) + Number(Restante))
+                document.getElementById("SmsContracted").innerHTML = SmsCredtis
+                document.getElementById("SmsTotal").innerHTML = SmsCredtis
+            } catch (error) {
+                alert("Nenhum SMS encontrado nessa data");
+                document.getElementById("nameSms").innerHTML = "";
+                document.getElementById("UsadoSms").innerHTML = "";
+                document.getElementById("RestSms").innerHTML = "";
+                Resquest = x.data[0].Request;
+                Restante = x.data[0].Restante;
+                SmsCredtis = (Number(Resquest) + Number(Restante))
+                document.getElementById("SmsContracted").innerHTML = ""
+                document.getElementById("SmsTotal").innerHTML = ""
+            }
+                    
+            }).catch(function(x){
+                document.getElementById("nameSms").innerHTML = "";
+                document.getElementById("UsadoSms").innerHTML = "";
+                document.getElementById("RestSms").innerHTML = "";
+                Resquest = x.data[0].Request;
+                Restante = x.data[0].Restante;
+                SmsCredtis = (Number(Resquest) + Number(Restante))
+                document.getElementById("SmsContracted").innerHTML = ""
+                document.getElementById("SmsTotal").innerHTML = ""
+            });
  }

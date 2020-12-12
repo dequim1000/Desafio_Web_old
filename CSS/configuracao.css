@@ -67,11 +67,16 @@
 }
 
 #ulText{
-    width: 300px;
+    width: 400px;
     font-size: 22px;
     margin-top: 10px;
     padding-left: 10px;
     text-decoration: none;
+}
+
+.aProvedor{
+    display: flex;
+    flex-direction: column;
 }
 
 #lixeira{
@@ -88,6 +93,11 @@
     }
     .btnLoginProvedor{
         margin-left: 90px;
+    }
+    #ulText{
+        width: 250px;
+        display: flex;
+        flex-wrap: wrap;
     }
 }
 
